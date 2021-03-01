@@ -1,0 +1,7 @@
+setup.py
+swallow.py
+swallow.egg-info/PKG-INFO
+swallow.egg-info/SOURCES.txt
+swallow.egg-info/dependency_links.txt
+swallow.egg-info/requires.txt
+swallow.egg-info/top_level.txt

@@ -6,11 +6,17 @@
 
 <body>
 	<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d0a2a2231f80471cb36b52de8b439a98"}'></script><!-- End Cloudflare Web Analytics -->
-<ul>
-  <li><a href="default.asp">Home</a></li>
-  <li><a href="news.asp">News</a></li>
-  <li><a href="contact.asp">Contact</a></li>
-  <li><a href="about.asp">About</a></li>
-</ul> 
+<div class="header">
+	<h1>{% block title %}{% endblock %}</h1>
+	<div class="navbar">	
+		<a href="/" class="">Home</a>
+
+		<a href="/post" class="}">Post</a>
+
+		<a href="/posts" class="}">View Posts</a>
+	</div>
+</div>
+
+<hr> 
 
 </body>

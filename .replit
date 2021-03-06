@@ -1,1 +1,1 @@
-run = "python swallow.py"
+run = "bash start.sh"

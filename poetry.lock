@@ -49,6 +49,14 @@ version = "0.1.1"
 
 [[package]]
 category = "main"
+description = "Python package for providing Mozilla's CA Bundle."
+name = "certifi"
+optional = false
+python-versions = "*"
+version = "2020.12.5"
+
+[[package]]
+category = "main"
 description = "Universal encoding detector for Python 2 and 3"
 name = "chardet"
 optional = false
@@ -117,6 +125,19 @@ cachelib = "*"
 
 [[package]]
 category = "main"
+description = "Simple integration of Flask and WTForms."
+name = "flask-wtf"
+optional = false
+python-versions = "*"
+version = "0.14.3"
+
+[package.dependencies]
+Flask = "*"
+WTForms = "*"
+itsdangerous = "*"
+
+[[package]]
+category = "main"
 description = "Internationalized Domain Names in Applications (IDNA)"
 name = "idna"
 optional = false
@@ -177,11 +198,52 @@ werkzeug = ">=1.0.1,<2.0.0"
 
 [[package]]
 category = "main"
+description = "Python client for Sentry (https://sentry.io)"
+name = "sentry-sdk"
+optional = false
+python-versions = "*"
+version = "1.0.0"
+
+[package.dependencies]
+certifi = "*"
+urllib3 = ">=1.10.0"
+
+[package.extras]
+aiohttp = ["aiohttp (>=3.5)"]
+beam = ["apache-beam (>=2.12)"]
+bottle = ["bottle (>=0.12.13)"]
+celery = ["celery (>=3)"]
+chalice = ["chalice (>=1.16.0)"]
+django = ["django (>=1.8)"]
+falcon = ["falcon (>=1.4)"]
+flask = ["flask (>=0.11)", "blinker (>=1.1)"]
+pure_eval = ["pure-eval", "executing", "asttokens"]
+pyspark = ["pyspark (>=2.4.4)"]
+rq = ["rq (>=0.6)"]
+sanic = ["sanic (>=0.8)"]
+sqlalchemy = ["sqlalchemy (>=1.2)"]
+tornado = ["tornado (>=5)"]
+
+[[package]]
+category = "main"
 description = "Backported and Experimental Type Hints for Python 3.5+"
 name = "typing-extensions"
 optional = false
 python-versions = "*"
 version = "3.7.4.3"
+
+[[package]]
+category = "main"
+description = "HTTP library with thread-safe connection pooling, file post, and more."
+name = "urllib3"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
+version = "1.26.3"
+
+[package.extras]
+brotli = ["brotlipy (>=0.6.0)"]
+secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
+socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 
 [[package]]
 category = "main"
@@ -205,6 +267,22 @@ watchdog = ["watchdog"]
 
 [[package]]
 category = "main"
+description = "A flexible forms validation and rendering library for Python web development."
+name = "wtforms"
+optional = false
+python-versions = "*"
+version = "2.3.3"
+
+[package.dependencies]
+MarkupSafe = "*"
+
+[package.extras]
+email = ["email-validator"]
+ipaddress = ["ipaddress"]
+locale = ["Babel (>=1.3)"]
+
+[[package]]
+category = "main"
 description = "Yet another URL library"
 name = "yarl"
 optional = false
@@ -216,7 +294,7 @@ idna = ">=2.0"
 multidict = ">=4.0"
 
 [metadata]
-content-hash = "c4cbc6155535ab0c3770053b9a0e32235b0999f4135d8487d9a7ca9fa2aeff9f"
+content-hash = "f845e1ec29726c57008e4d4b5a306ea6dc0fb2d2125e4c9ed64cb8ab54fd2a36"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -271,6 +349,10 @@ cachelib = [
     {file = "cachelib-0.1.1-py3-none-any.whl", hash = "sha256:7df6e05b8dfccdeb869e171575580e5606cf1e82a166633b3cb406bc4f113fd0"},
     {file = "cachelib-0.1.1.tar.gz", hash = "sha256:47e95a67d68c729cbad63285a790a06f0e0d27d71624c6e44c1ec3456bb4476f"},
 ]
+certifi = [
+    {file = "certifi-2020.12.5-py2.py3-none-any.whl", hash = "sha256:719a74fb9e33b9bd44cc7f3a8d94bc35e4049deebe19ba7d8e108280cfd59830"},
+    {file = "certifi-2020.12.5.tar.gz", hash = "sha256:1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c"},
+]
 chardet = [
     {file = "chardet-3.0.4-py2.py3-none-any.whl", hash = "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"},
     {file = "chardet-3.0.4.tar.gz", hash = "sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"},
@@ -293,6 +375,10 @@ flask-bootstrap = [
 flask-session = [
     {file = "Flask-Session-0.3.2.tar.gz", hash = "sha256:0768e2bbf06f963ec1aa711bde7aa32dc39ff70f89b495d6db687d899eae4423"},
     {file = "Flask_Session-0.3.2-py2.py3-none-any.whl", hash = "sha256:d75eb27f918421ccaf1ba86353348b84ecf07fc64ce40ff7ad05a190c4bf50f1"},
+]
+flask-wtf = [
+    {file = "Flask-WTF-0.14.3.tar.gz", hash = "sha256:d417e3a0008b5ba583da1763e4db0f55a1269d9dd91dcc3eb3c026d3c5dbd720"},
+    {file = "Flask_WTF-0.14.3-py2.py3-none-any.whl", hash = "sha256:57b3faf6fe5d6168bda0c36b0df1d05770f8e205e18332d0376ddb954d17aef2"},
 ]
 idna = [
     {file = "idna-3.1-py3-none-any.whl", hash = "sha256:5205d03e7bcbb919cc9c19885f9920d622ca52448306f2377daede5cf3faac16"},
@@ -403,10 +489,18 @@ replit = [
     {file = "replit-2.0.0-py3-none-any.whl", hash = "sha256:862b49887f486a5c83eba4809b86a977378a008f1c5d53ab3c1187418194cf18"},
     {file = "replit-2.0.0.tar.gz", hash = "sha256:f6953201a5ff5b3ae29b7630fa13a87f2423f5a9afba06fc5427ee0f958c7aa7"},
 ]
+sentry-sdk = [
+    {file = "sentry-sdk-1.0.0.tar.gz", hash = "sha256:71de00c9711926816f750bc0f57ef2abbcb1bfbdf5378c601df7ec978f44857a"},
+    {file = "sentry_sdk-1.0.0-py2.py3-none-any.whl", hash = "sha256:9221e985f425913204989d0e0e1cbb719e8b7fa10540f1bc509f660c06a34e66"},
+]
 typing-extensions = [
     {file = "typing_extensions-3.7.4.3-py2-none-any.whl", hash = "sha256:dafc7639cde7f1b6e1acc0f457842a83e722ccca8eef5270af2d74792619a89f"},
     {file = "typing_extensions-3.7.4.3-py3-none-any.whl", hash = "sha256:7cb407020f00f7bfc3cb3e7881628838e69d8f3fcab2f64742a5e76b2f841918"},
     {file = "typing_extensions-3.7.4.3.tar.gz", hash = "sha256:99d4073b617d30288f569d3f13d2bd7548c3a7e4c8de87db09a9d29bb3a4a60c"},
+]
+urllib3 = [
+    {file = "urllib3-1.26.3-py2.py3-none-any.whl", hash = "sha256:1b465e494e3e0d8939b50680403e3aedaa2bc434b7d5af64dfd3c958d7f5ae80"},
+    {file = "urllib3-1.26.3.tar.gz", hash = "sha256:de3eedaad74a2683334e282005cd8d7f22f4d55fa690a2a1020a416cb0a47e73"},
 ]
 visitor = [
     {file = "visitor-0.1.3.tar.gz", hash = "sha256:2c737903b2b6864ebc6167eef7cf3b997126f1aa94bdf590f90f1436d23e480a"},
@@ -414,6 +508,10 @@ visitor = [
 werkzeug = [
     {file = "Werkzeug-1.0.1-py2.py3-none-any.whl", hash = "sha256:2de2a5db0baeae7b2d2664949077c2ac63fbd16d98da0ff71837f7d1dea3fd43"},
     {file = "Werkzeug-1.0.1.tar.gz", hash = "sha256:6c80b1e5ad3665290ea39320b91e1be1e0d5f60652b964a3070216de83d2e47c"},
+]
+wtforms = [
+    {file = "WTForms-2.3.3-py2.py3-none-any.whl", hash = "sha256:7b504fc724d0d1d4d5d5c114e778ec88c37ea53144683e084215eed5155ada4c"},
+    {file = "WTForms-2.3.3.tar.gz", hash = "sha256:81195de0ac94fbc8368abbaf9197b88c4f3ffd6c2719b5bf5fc9da744f3d829c"},
 ]
 yarl = [
     {file = "yarl-1.6.3-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:0355a701b3998dcd832d0dc47cc5dedf3874f966ac7f870e0f3a6788d802d434"},

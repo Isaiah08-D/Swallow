@@ -3,9 +3,9 @@ from python.config import Config
 
 
 def login_check():
-	if session['login'] == None or session['login'] == False:
+	if session.get('login') == None or session.get('login') == False:
 		return False
-	return True
+	return [True, session.get('login')[1]]
 
 def key_find(key):
 	db = Config.user_db
@@ -13,3 +13,13 @@ def key_find(key):
 		if data['key'] == key:
 			return name
 	return False
+
+class User:
+	def __init__(self, username, password):
+		self.username = username
+		self.password = password
+	def validate(self):
+		try:
+			return Config.db[self.username]['password'] == self.password
+		except:
+			return False

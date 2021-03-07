@@ -1,3 +1,5 @@
+import os
+os.system("pip install --upgrade 'sentry-sdk[flask]'")
 from flask import *
 from sentry_sdk import set_user
 # the Config class in python/config.py

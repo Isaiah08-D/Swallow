@@ -17,13 +17,14 @@ def create_app():
 
 	Bootstrap(app)
 	Session(app)
-	app.config['SECRET_KEY'] = os.get
+
 
 	return app
 
 
 class Config:
 	app = create_app()
+	app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 	logged_in_key = os.getenv('LOGGED_IN')
 	logged_out_key = os.getenv('LOGGED_OUT')
 

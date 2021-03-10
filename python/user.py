@@ -1,5 +1,5 @@
 from flask import session
-from python.config import Config
+from config import Config
 
 
 def login_check():
@@ -23,3 +23,4 @@ class User:
 			return Config.db[self.username]['password'] == self.password
 		except:
 			return False
+			

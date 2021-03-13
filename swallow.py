@@ -1,9 +1,13 @@
 import os
-os.system("pip install --upgrade 'sentry-sdk[flask]'")
+try:
+	from sentry_sdk import set_user, add_breadcrumb
+except:
+	os.system("pip install --upgrade sentry-sdk[flask]")
+	from sentry_sdk import set_user, add_breadcrumb
+
 from flask import *
-from sentry_sdk import set_user, add_breadcrumb
 # the Config class in python/config.py
-from config import Config
+from python.config import Config
 # python.user = python/user.py
 from python.user import login_check, User
 # python.forms = python/forms.py
@@ -11,9 +15,8 @@ from python.forms import *
 
 # Creating the server!
 app = Config.app
-app.config['SECRET_KEY']
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 non_login_paths = ['/', '/login', '/ping', '/static/style.css']
-
 
 # When the user goes to any page, this is ran first:
 @app.before_request
@@ -23,27 +26,34 @@ def before_request():
 		
 		# If the user is going to a route that requires login, redirect him to the login page.
 		if request.path not in non_login_paths:
-			return redirect('/login?redirect=' + str(request.path) + '&login=' + Config.logged_out_key)
+			return redirect('/login')
 	# If the user is logged in:
 	else:
 		pass
 
 
-'''
+
 # The home page
 @app.route('/')
 def index():
+	# If the user is logged in, redirect him to the dashboard.
+	if login_check != False:
+		return redirect(url_for('dashboard'))
 	return render_template('index.html', session=session)
-'''
+
+@app.route('/dashboard')
+def dashboard():
+	return render_template('dash.html', db=Config.db)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	form = LoginForm()
 	# If the form validates:
-	if form.validate_on_submit:
+	if form.validate_on_submit():
 		# Get the form data
-		username = form.username.data
-		password = form.password.data
+		username = str(form.username.data)
+		password = str(form.password.data)
 
 		# Initialize the User class from python/user.py
 		user = User(username, password)
@@ -60,8 +70,8 @@ def login():
 				message=user.username + ' logged in',
 				level='info',
 			)
-			# redirect to the home page
-			return redirect(url_for('index'))
+			# redirect to the page the user was at when it was redirected to the login page
+			return redirect('redirect_after')
 		# If the user is not validated:
 		else:
 
@@ -71,7 +81,6 @@ def login():
 				category='auth',
 				message='User attempted to login using invalid credentials: ' + username + ' as username and ' + password + ' as password'
 			)
-
 			return redirect(url_for('login'))
 			
 		
@@ -85,4 +94,4 @@ def login():
 
 
 
-app.run('0.0.0.0')
+app.run('0.0.0.0', debug=True)

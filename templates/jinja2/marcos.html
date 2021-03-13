@@ -1,7 +1,7 @@
 {% macro login(session) -%}
 	{% if session.get('login') == False or session.get('login') == None %}
-	{% return False %}
+	{{ False }}
 	{% else %}
-	{ [True, session.get('login')[1]] }
+	{{ [True, session.get('login')[1]] }}
 	{% endif %}
 {%- endmacro -%}

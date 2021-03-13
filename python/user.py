@@ -1,5 +1,5 @@
 from flask import session
-from config import Config
+from python.config import Config
 
 
 def login_check():

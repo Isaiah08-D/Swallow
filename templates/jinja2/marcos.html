@@ -1,7 +1,0 @@
-{% macro login(session) -%}
-	{% if session.get('login') == False or session.get('login') == None %}
-	{{ False }}
-	{% else %}
-	{{ [True, session.get('login')[1]] }}
-	{% endif %}
-{%- endmacro -%}
